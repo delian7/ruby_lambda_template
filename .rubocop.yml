@@ -8,3 +8,6 @@ AllCops:
 
 Metrics/MethodLength:
   Max: 200
+
+RSpec/MultipleExpectations:
+  Max: 3

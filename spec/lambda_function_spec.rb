@@ -1,7 +1,7 @@
 require 'json'
 require_relative '../lambda_function'
 
-RSpec.describe 'lambda_handler' do
+RSpec.describe 'LambdaFunctionSpec' do
   let(:context) { {} }
 
   describe 'when invoked with a valid event' do
