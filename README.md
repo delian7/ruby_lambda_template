@@ -76,12 +76,13 @@ This repository provides a starting point for AWS Lambda functions written in Ru
 A pre-commit hook is set up to run Rubocop & the Test Suite Rspec before each commit to ensure code quality. To enable it:
 
 ```sh
-  ln -s ../../.hooks/pre-commit .git/hooks/pre-commit
-  The pre-commit hook will:
+  cp hooks/pre-commit .git/hooks/pre-commit
+  chmod +x .git/hooks/pre-commit
 ```
 
-Run Rubocop on staged files
+The pre-commit hook will:
 
+- Run Rubocop on staged files
 - Run RSpec Testing Suite
 - Prevent commit if there are any violations
 - Show detailed output of any style issues
