@@ -1,0 +1,20 @@
+#!/bin/sh
+# Run Rubocop on staged files
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep ".rb$" | grep -v "db/schema.rb")
+
+if [ -n "$FILES" ]; then
+  echo "Running Rubocop on staged files..."
+  bundle exec rubocop $FILES
+  if [ $? -ne 0 ]; then
+    echo "Rubocop failed! Please fix the issues before committing."
+    exit 1
+  fi
+fi
+
+# Run RSpec tests
+echo "Running RSpec tests..."
+bundle exec rspec
+if [ $? -ne 0 ]; then
+  echo "RSpec tests failed! Please fix the failing tests before committing."
+  exit 1
+fi
