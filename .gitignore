@@ -1,3 +1,5 @@
 notion-lambda-app.zip
 .env
 .byebug_history
+vendor/bundle
+lambda_function.zip

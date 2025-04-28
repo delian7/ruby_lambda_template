@@ -1,5 +1,5 @@
 require 'json'
-require_relative '../lambda_function'
+require_relative '../src/lambda_function'
 
 RSpec.describe 'LambdaFunctionSpec' do
   let(:context) { {} }

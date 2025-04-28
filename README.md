@@ -41,19 +41,23 @@ bundle exec rspec
 
 ## Deploying to AWS Lambda
 
-1. **Configure AWS CLI:**
+1. Make sure that Ruby Runtime is 3.3
+
+2. Configure the function's handler to be `src/lambda_function.lambda_handler` in AWS Lambda GUI.
+
+3. **Configure AWS CLI:**
 
    ```sh
    aws configure
    ```
 
-2. **Package the application:**
+4. **Package the application:**
 
    ```sh
-   zip -r lambda_function.zip .
+   zip -r lambda_function.zip src Gemfile Gemfile.lock vendor
    ```
 
-3. **Update the Lambda function code:**
+5. **Update the Lambda function code:**
 
    ```sh
    aws lambda update-function-code --function-name your_lambda_function_name \
@@ -63,7 +67,7 @@ bundle exec rspec
 *Alternatively, you can combine packaging and updating:*
 
 ```sh
-zip -r lambda_function.zip . && aws lambda update-function-code --function-name your_lambda_function_name \
+zip -r lambda_function.zip src Gemfile Gemfile.lock vendor && aws lambda update-function-code --function-name your_lambda_function_name \
 --zip-file fileb://lambda_function.zip
 ```
 
